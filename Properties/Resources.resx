@@ -117,4 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Shader.frag" xml:space="preserve">
+    <value>#version 150
+in vec4 pass_Color;
+in vec2 pass_Uv;
+in vec4 pass_Diffuse;
+in vec4 pass_Ambient;
+in float pass_NormalDotLight;
+
+out vec4 out_Color;
+
+uniform mat4 mvpMatrix;
+uniform vec3 lightDirection;
+uniform sampler2D mainTex;
+
+void main(void) {	
+	vec4 finalColor;
+	vec4 diffuseNorm = pass_Diffuse * pass_NormalDotLight;
+	vec4 tex2D = texture(mainTex, pass_Uv) * pass_Color;
+	finalColor =  (pass_Ambient + diffuseNorm) * tex2D;
+	out_Color = finalColor; 
+}</value>
+  </data>
+  <data name="Shader.vert" xml:space="preserve">
+    <value>#version 150
+in vec3 in_Position;
+in vec3 in_Color; 
+in vec3 in_Normal;
+in vec3 in_Uv;
+
+out vec4 pass_Color;
+out vec2 pass_Uv;
+out float pass_NormalDotLight;
+out vec4 pass_Diffuse;
+out vec4 pass_Ambient;
+
+uniform mat4 mvpMatrix;
+uniform vec3 lightDirection;
+uniform sampler2D mainTex;
+
+const vec4 ambient = vec4(0.5, 0.5, 0.5, 1.0);
+const vec4 diffuse = vec4(0.75, 0.75, 0.75, 1.0);
+
+void main(void) {	
+    gl_Position = mvpMatrix * vec4(in_Position, 1.0);					
+	pass_NormalDotLight = clamp(dot(in_Normal, lightDirection), 0.0, 1.0);
+	pass_Color = vec4(in_Color, 1.0);
+	pass_Uv = in_Uv.st;
+	pass_Ambient = ambient;
+	pass_Diffuse = diffuse;
+}</value>
+  </data>
 </root>

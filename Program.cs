@@ -41,7 +41,8 @@ namespace PSXPrev
         {
             if (args.Length == 0)
             {
-                Console.WriteLine("Usage PSXPrev folder filter(optional) -tmd(optional) -tmdAlt(optional) -pmd(optional) -tim(optional) -timAlt(optional) -tod(optional) -hmdmodels(optional) -log(optional) -noverbose(optional)");
+                Console.WriteLine("Usage PSXPrev folder/iso filter(optional) -tmd(optional) -tmdAlt(optional) -pmd(optional) -tim(optional) -timAlt(optional) -tod(optional) -hmdmodels(optional) -log(optional) -noverbose(optional)");
+                Console.ReadKey();
                 return;
             }
 

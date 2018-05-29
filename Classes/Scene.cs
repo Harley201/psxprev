@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
+using PSXPrev.Properties;
 
 
 namespace PSXPrev
@@ -176,8 +177,8 @@ namespace PSXPrev
 
         private void SetupShaders()
         {
-            var vertexShaderSource = ManifestResourceLoader.LoadTextFile("Shaders\\Shader.vert");
-            var fragmentShaderSource = ManifestResourceLoader.LoadTextFile("Shaders\\Shader.frag");
+            var vertexShaderSource = Resources.Shader_vert;
+            var fragmentShaderSource = Resources.Shader_frag;
 
             _shaderProgram = GL.CreateProgram();
 
