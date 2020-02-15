@@ -1,8 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
-using Microsoft.WindowsAPICodePack.Dialogs;
-using Microsoft.WindowsAPICodePack.Shell.PropertySystem;
 
 namespace PSXPrev.Forms
 {
@@ -26,28 +24,14 @@ namespace PSXPrev.Forms
             }
         }
 
-        private void SelectISOButton_Click(object sender, EventArgs e)
-        {
-            using (var openFileDialog = new OpenFileDialog())
-            {
-                openFileDialog.Filter = "Iso Files (*.iso)|*.iso";
-                openFileDialog.Title = "Select an ISO to Scan";
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    FilenameText.Text = openFileDialog.FileName;
-                }
-            }
-        }
-
         private void SelectFolderButton_Click(object sender, EventArgs e)
         {
-            using (var folderBrowserDialog = new Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog())
+            using (var folderBrowserDialog = new FolderBrowserDialog())
             {
-                folderBrowserDialog.IsFolderPicker = true;
-                folderBrowserDialog.Title = "Select a Folder to Scan";
-                if (folderBrowserDialog.ShowDialog() == CommonFileDialogResult.Ok)
+                folderBrowserDialog.Description = "Select a Folder to Scan";
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
-                    FilenameText.Text = folderBrowserDialog.FileName;
+                    FilenameText.Text = folderBrowserDialog.SelectedPath;
                 }
             }
         }

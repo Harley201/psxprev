@@ -31,12 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LauncherForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.SelectFolderButton = new System.Windows.Forms.Button();
-            this.SelectISOButton = new System.Windows.Forms.Button();
             this.SelectFileButton = new System.Windows.Forms.Button();
             this.FilenameText = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.FilterText = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.scanForBffCheckBox = new System.Windows.Forms.CheckBox();
             this.scanForAnCheckBox = new System.Windows.Forms.CheckBox();
             this.psxCheckBox = new System.Windows.Forms.CheckBox();
             this.crocCheckBox = new System.Windows.Forms.CheckBox();
@@ -52,7 +52,6 @@
             this.NoVerboseCheckBox = new System.Windows.Forms.CheckBox();
             this.LogCheckBox = new System.Windows.Forms.CheckBox();
             this.ScanButton = new System.Windows.Forms.Button();
-            this.scanForBffCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -62,7 +61,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.SelectFolderButton);
-            this.groupBox1.Controls.Add(this.SelectISOButton);
             this.groupBox1.Controls.Add(this.SelectFileButton);
             this.groupBox1.Controls.Add(this.FilenameText);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -75,22 +73,12 @@
             // 
             // SelectFolderButton
             // 
-            this.SelectFolderButton.Location = new System.Drawing.Point(167, 45);
+            this.SelectFolderButton.Location = new System.Drawing.Point(86, 45);
             this.SelectFolderButton.Name = "SelectFolderButton";
             this.SelectFolderButton.Size = new System.Drawing.Size(79, 23);
             this.SelectFolderButton.TabIndex = 3;
             this.SelectFolderButton.Text = "Select Folder";
             this.SelectFolderButton.Click += new System.EventHandler(this.SelectFolderButton_Click);
-            // 
-            // SelectISOButton
-            // 
-            this.SelectISOButton.Location = new System.Drawing.Point(86, 45);
-            this.SelectISOButton.Name = "SelectISOButton";
-            this.SelectISOButton.Size = new System.Drawing.Size(75, 23);
-            this.SelectISOButton.TabIndex = 2;
-            this.SelectISOButton.Text = "Select ISO";
-            this.SelectISOButton.UseVisualStyleBackColor = true;
-            this.SelectISOButton.Click += new System.EventHandler(this.SelectISOButton_Click);
             // 
             // SelectFileButton
             // 
@@ -148,6 +136,16 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Scanners";
+            // 
+            // scanForBffCheckBox
+            // 
+            this.scanForBffCheckBox.AutoSize = true;
+            this.scanForBffCheckBox.Location = new System.Drawing.Point(310, 19);
+            this.scanForBffCheckBox.Name = "scanForBffCheckBox";
+            this.scanForBffCheckBox.Size = new System.Drawing.Size(45, 17);
+            this.scanForBffCheckBox.TabIndex = 10;
+            this.scanForBffCheckBox.Text = "BFF";
+            this.scanForBffCheckBox.UseVisualStyleBackColor = true;
             // 
             // scanForAnCheckBox
             // 
@@ -304,16 +302,6 @@
             this.ScanButton.UseVisualStyleBackColor = true;
             this.ScanButton.Click += new System.EventHandler(this.ScanButton_Click);
             // 
-            // scanForBffCheckBox
-            // 
-            this.scanForBffCheckBox.AutoSize = true;
-            this.scanForBffCheckBox.Location = new System.Drawing.Point(310, 19);
-            this.scanForBffCheckBox.Name = "scanForBffCheckBox";
-            this.scanForBffCheckBox.Size = new System.Drawing.Size(45, 17);
-            this.scanForBffCheckBox.TabIndex = 10;
-            this.scanForBffCheckBox.Text = "BFF";
-            this.scanForBffCheckBox.UseVisualStyleBackColor = true;
-            // 
             // LauncherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -346,7 +334,6 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button SelectFolderButton;
-        private System.Windows.Forms.Button SelectISOButton;
         private System.Windows.Forms.Button SelectFileButton;
         private System.Windows.Forms.TextBox FilenameText;
         private System.Windows.Forms.GroupBox groupBox2;

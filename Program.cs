@@ -10,8 +10,7 @@ using System.Windows.Forms;
 using PSXPrev.Forms;
 using System.Threading.Tasks;
 using System.Text;
-using DiscUtils;
-using DiscUtils.Iso9660;
+
 using PSXPrev.Classes;
 
 namespace PSXPrev
@@ -423,33 +422,7 @@ namespace PSXPrev
                 });
             }
 
-            if (_path.ToLowerInvariant().EndsWith(".iso"))
-            {
-                using (var isoStream = File.Open(_path, FileMode.Open))
-                {
-                    var cdReader = new CDReader(isoStream, true);
-                    var files = cdReader.GetFiles("", Filter ?? "*.*", SearchOption.AllDirectories);
-                    foreach (var file in files)
-                    {
-                        if (HasInvalidExtension(file))
-                        {
-                            continue;
-                        }
-                        var fileInfo = cdReader.GetFileInfo(file);
-                        if (fileInfo.Exists)
-                        {
-                            foreach (var parser in parsers)
-                            {
-                                using (var stream = fileInfo.OpenRead())
-                                {
-                                    ProcessFile(stream, file, parser);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            else if (File.Exists(_path))
+            if (File.Exists(_path))
             {
                 Parallel.ForEach(parsers, parser =>
                 {
